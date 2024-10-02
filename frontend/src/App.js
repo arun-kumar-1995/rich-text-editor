@@ -23,6 +23,8 @@ import "./styles/App.css";
 
 import EditorScreen from "./components/EditorScreen";
 import TextFont from "./components/TextFont";
+import TextAlignment from "./components/TextAlignment";
+import TextColor from "./components/TextColor";
 
 const App = () => {
   // for text style
@@ -31,11 +33,23 @@ const App = () => {
     text: "Paragraph",
   });
 
+  const [alignment, setAlignment] = useState({
+    element: FiAlignLeft,
+  });
+
   const handleTextStyle = (selectedTextStyle) => {
-    console.log("--------", selectedTextStyle);
+    console.log("---TEXT STYLE----", selectedTextStyle);
     setTextStyle(selectedTextStyle);
   };
 
+  const handleAlignmentChange = (selectedTextAlignment) => {
+    console.log("----ALIGN MENT----", selectedTextAlignment);
+    setAlignment(selectedTextAlignment);
+  };
+
+  const HandleTextColorChange = () =>{
+    
+  }
   return (
     <div className="rich-text-editor">
       <div className="rich-top-nav">
@@ -69,30 +83,13 @@ const App = () => {
         <section className="text-alignment">
           <div className="style-dropdown dropdown">
             <div className="text-align" value="text-align">
-              <FiAlignLeft />
+              {React.createElement(alignment.element)}
               <button className="btn-icon arrow-down">
                 <RiArrowDropDownLine />
               </button>
             </div>
           </div>
-          <div className="alignment-selector selector">
-            <div>
-              <FiAlignLeft />
-              <span>Left</span>
-            </div>
-            <div>
-              <FiAlignRight />
-              <span>Right</span>
-            </div>
-            <div>
-              <FiAlignCenter />
-              <span>Center</span>
-            </div>
-            <div>
-              <FiAlignJustify />
-              <span>Justify</span>
-            </div>
-          </div>
+          <TextAlignment onHandleAlignmentChange={handleAlignmentChange} />
         </section>
         <section className="text-color">
           <div className="style-dropdown dropdown">
@@ -104,11 +101,7 @@ const App = () => {
               <RiArrowDropDownLine />
             </button>
           </div>
-          <div className="text-color-selector selector">
-            <div className="color" style={{ backgroundColor: "red" }}></div>
-            <div className="color" style={{ backgroundColor: "blue" }}></div>
-            <div className="color" style={{ backgroundColor: "green" }}></div>
-          </div>
+          <TextColor onHandleTextColorChange={handleTextColorChange}/>
         </section>
         <section className="bold text-independent">
           <button className="text-bold">
