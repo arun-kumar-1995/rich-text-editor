@@ -1,0 +1,23 @@
+.editor-container {
+  width: 96%;
+  margin: 1em 2%;
+}
+
+.editor-screen {
+  padding: 0.8rem;
+  cursor: text;
+  min-height: 88vh;
+  outline: 1px solid #ccc;
+  cursor: pointer;
+  direction: ltr;
+  font-size: 1.6rem;
+}
+
+.editor-screen.active {
+  cursor: text;
+  outline: 1px solid #131312;
+}
+
+.editor-screen:focus {
+  outline: 1px solid #131312;
+}

@@ -1,0 +1,103 @@
+div {
+  font-size: 1.4rem;
+}
+
+div.rich-top-nav {
+  display: flex;
+  justify-content: center;
+  padding: 0.4rem;
+  gap: 0.4em;
+}
+
+div.rich-top-nav section {
+  position: relative;
+}
+
+.selector {
+  position: absolute;
+  opacity: 0;
+  visibility: hidden;
+  z-index: 1;
+  transition: all 0.24s ease-in;
+}
+
+.dropdown {
+  padding: 0.4rem 0.8rem;
+  width: 100%;
+}
+
+div.rich-top-nav section .btn-icon {
+  margin-left: 0.4em;
+}
+
+div.rich-top-nav section:hover > .selector {
+  margin-top: 0.5em;
+  z-index: 9999;
+  opacity: 1;
+  visibility: visible;
+}
+
+svg {
+  font-size: 2.2rem;
+}
+button.editor-state {
+  padding: 0.4rem 0.8rem;
+}
+
+.style-dropdown {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid;
+  border-radius: 0.4rem;
+}
+
+.selector div {
+  display: inline-flex;
+  width: 100%;
+  cursor: pointer;
+  outline: 1px solid;
+  padding: 0.6rem 1.2rem;
+  align-items: center;
+}
+
+.selector div span {
+  margin-left: 0.4em;
+}
+
+/* text -color  */
+.current-color,
+.color {
+  width: 2.8rem;
+  height: 2.8rem;
+  border-radius: 0.4rem;
+}
+
+.text-color-selector {
+  padding: 0.4rem;
+  display: flex;
+  flex-direction: row;
+  gap: 0.6em;
+  background-color: #f0f0f0;
+  border-radius: 0.4rem;
+}
+
+.text-color-selector .color {
+  display: block;
+  width: 3.2rem;
+  height: 3.2rem;
+  border: none;
+  outline: none;
+}
+
+/*  text-independent */
+
+.text-independent button {
+  padding: 0.6rem 0.8rem;
+  border-radius: 0.4rem;
+  transition: all 0.24s ease;
+}
+.text-independent button.selected,
+.text-independent button:hover {
+  color: #fff;
+  background-color: #212121;
+}
