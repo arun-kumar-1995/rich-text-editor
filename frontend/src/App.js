@@ -22,10 +22,20 @@ import { IoCodeOutline } from "react-icons/io5";
 import "./styles/App.css";
 
 import EditorScreen from "./components/EditorScreen";
+import TextFont from "./components/TextFont";
 
 const App = () => {
-  const [textStyle , setTextStyle] = useState();
-  
+  // for text style
+  const [textStyle, setTextStyle] = useState({
+    value: "p",
+    text: "Paragraph",
+  });
+
+  const handleTextStyle = (selectedTextStyle) => {
+    console.log("--------", selectedTextStyle);
+    setTextStyle(selectedTextStyle);
+  };
+
   return (
     <div className="rich-text-editor">
       <div className="rich-top-nav">
@@ -42,37 +52,18 @@ const App = () => {
         </div>
         <section className="text-styles">
           <div className="style-dropdown dropdown">
-            <div className="">Normal Text</div>
+            <div className="" value={textStyle.value}>
+              {textStyle.text}
+            </div>
             <button className="btn-icon arrow-down">
               <RiArrowDropDownLine />
             </button>
           </div>
-          <div className="text-style-selector selector">
-            <div className="text-style" value="h1">
-              Heading 1
-            </div>
-            <div className="text-style" value="h2">
-              Heading 2
-            </div>
-            <div className="text-style" value="h3">
-              Heading 3
-            </div>
-            <div className="text-style" value="h4">
-              Heading 4
-            </div>
-            <div className="text-style" value="h5">
-              Heading 5
-            </div>
-            <div className="text-style" value="h6">
-              Heading 6
-            </div>
-            <div className="text-style" value="p">
-              Normal text
-            </div>
-            <div className="text-style" value="span">
-              plain text
-            </div>
-          </div>
+
+          <TextFont
+            onHandleTextStyle={handleTextStyle}
+            currentTextStyle={textStyle}
+          />
         </section>
 
         <section className="text-alignment">
