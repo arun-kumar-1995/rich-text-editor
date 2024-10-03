@@ -15,8 +15,8 @@ div.rich-top-nav section {
 
 .selector {
   position: absolute;
-  /* opacity: 0;
-  visibility: hidden; */
+  opacity: 0;
+  visibility: hidden;
   z-index: 1;
   transition: all 0.24s ease-in;
 }
@@ -72,19 +72,19 @@ button.editor-state {
 .text-style.selected-text {
   background-color: #09f0a3;
 }
-
+.alignment.selected-align {
+  background-color: #09f0a3;
+}
 
 /* text alignment  */
 
-.alignment-selector  .alignment{
-  width:100%;
+.alignment-selector .alignment {
+  width: 100%;
 }
 
-.alignment-selector  .alignment svg{
- margin-right:0.2em;
+.alignment-selector .alignment svg {
+  margin-right: 0.2em;
 }
-
-
 
 /* text -color  */
 .current-color,
@@ -102,7 +102,7 @@ button.editor-state {
   gap: 0.6em;
   border-radius: 0.4rem;
   background-color: #fff;
-  min-width:22rem;
+  min-width: 22rem;
 }
 
 .text-color-selector .color {

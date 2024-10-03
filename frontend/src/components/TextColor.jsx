@@ -1,8 +1,8 @@
-import React from "react";
+import React, { memo } from "react";
 
 const colors = ["black", "red", "green", "blue", "orange", "cyan"];
 
-const TextColor = ({ onHandleTextColorChange }) => {
+const TextColor = memo(({ onHandleTextColorChange }) => {
   const handleTextColorChange = (e) => {
     const textColor = e.target.getAttribute("data-color");
     if (textColor) {
@@ -24,6 +24,6 @@ const TextColor = ({ onHandleTextColorChange }) => {
       ))}
     </div>
   );
-};
+});
 
 export default TextColor;

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { memo } from "react";
 
 const editorText = [
   { value: "h1", text: "Heading 1" },
@@ -10,7 +10,7 @@ const editorText = [
   { value: "p", text: "Paragraph" },
   { value: "span", text: "Span Text" },
 ];
-const TextFont = ({ onHandleTextStyle, currentTextStyle }) => {
+const TextFont = memo(({ onHandleTextStyle, currentTextStyle }) => {
   // handle on click events
   const handleTextStyle = (e) => {
     const value = e.target.getAttribute("data-value");
@@ -36,6 +36,6 @@ const TextFont = ({ onHandleTextStyle, currentTextStyle }) => {
       ))}
     </div>
   );
-};
+});
 
 export default TextFont;

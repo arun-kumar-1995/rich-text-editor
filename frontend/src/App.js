@@ -1,16 +1,16 @@
-import React, { useState } from "react";
-
+import React, { lazy, Suspense, useState } from "react";
 import { BiUndo } from "react-icons/bi";
+import { RiArrowDropDownLine } from "react-icons/ri";
 import {
   FiAlignLeft,
   FiAlignRight,
   FiAlignCenter,
   FiAlignJustify,
 } from "react-icons/fi";
+
 import { MdOutlineShare } from "react-icons/md";
 import { RxUnderline } from "react-icons/rx";
 import { TbBold } from "react-icons/tb";
-import { RiArrowDropDownLine } from "react-icons/ri";
 import { FiItalic } from "react-icons/fi";
 import { MdOutlineFormatListNumberedRtl } from "react-icons/md";
 import { MdOutlineFormatListNumbered } from "react-icons/md";
@@ -21,11 +21,12 @@ import { IoCodeOutline } from "react-icons/io5";
 
 import "./styles/App.css";
 
-import EditorScreen from "./components/EditorScreen";
 import TextFont from "./components/TextFont";
 import TextAlignment from "./components/TextAlignment";
 import TextColor from "./components/TextColor";
+const EditorScreen = lazy(() => import("./components/EditorScreen"));
 
+// define the alignments
 const alignments = [
   { element: FiAlignLeft, position: "Left" },
   { element: FiAlignRight, position: "Right" },
@@ -40,7 +41,7 @@ const App = () => {
     text: "Paragraph",
   });
 
-  const [alignment, setAlignment] = useState(alignments[0]);
+  const [textAlignment, setTextAlignment] = useState(alignments[0]);
 
   const [textColor, setTextColor] = useState("black");
   const handleTextStyle = (selectedTextStyle) => {
@@ -55,7 +56,7 @@ const App = () => {
       (align) => align.position === selectedTextAlignment.position
     );
     console.log("----ALIGN MENT----", element);
-    setAlignment(element);
+    setTextAlignment(element);
   };
 
   const handleTextColorChange = (selectedColor) => {
@@ -95,13 +96,16 @@ const App = () => {
         <section className="text-alignment">
           <div className="style-dropdown dropdown">
             <div className="text-align" value="text-align">
-              {React.createElement(alignment.element)}
+              {React.createElement(textAlignment.element)}
               <button className="btn-icon arrow-down">
                 <RiArrowDropDownLine />
               </button>
             </div>
           </div>
-          <TextAlignment onHandleAlignmentChange={handleAlignmentChange} />
+          <TextAlignment
+            onHandleAlignmentChange={handleAlignmentChange}
+            currentAlignmentStyle={textAlignment}
+          />
         </section>
         <section className="text-color">
           <div className="style-dropdown dropdown">
@@ -115,54 +119,11 @@ const App = () => {
           </div>
           <TextColor onHandleTextColorChange={handleTextColorChange} />
         </section>
-        <section className="bold text-independent">
-          <button className="text-bold">
-            <TbBold />
-          </button>
-        </section>
-        <section className="italic  text-independent">
-          <button className="text-italic">
-            <FiItalic />
-          </button>
-        </section>
-        <section className="strike  text-independent">
-          <button className="text-strike" title="text-strike">
-            <GoStrikethrough />
-          </button>
-        </section>
-        <section className="underline  text-independent">
-          <button className="text-underline" title="text-underline">
-            <RxUnderline />
-          </button>
-        </section>
-        <section className="underline  text-independent">
-          <button className="text-underline" title="code">
-            <IoCodeOutline />
-          </button>
-        </section>
-        <section className="number-list  text-independent">
-          <button className="unorder-list">
-            <MdOutlineFormatListNumbered />
-          </button>
-        </section>
-        <section className="list  text-independent">
-          <button className="bullet-list">
-            <MdOutlineFormatListBulleted />
-          </button>
-        </section>
-        <section className="image  text-independent">
-          <button className="bullet-list">
-            <GoImage />
-          </button>
-        </section>
-        <section className="share  text-independent">
-          <button className="bullet-list" title="share">
-            <MdOutlineShare />
-          </button>
-        </section>
       </div>
 
-      <EditorScreen />
+      <Suspense fallback={<div>...loading</div>}>
+        <EditorScreen />
+      </Suspense>
     </div>
   );
 };
