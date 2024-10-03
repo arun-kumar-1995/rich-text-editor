@@ -1,10 +1,10 @@
 .editor-container {
   width: 96%;
-  margin: 1em 2%;
+  margin: 0 2%;
 }
 
 .editor-screen {
-  padding: 0.8rem;
+  padding: 0.8rem 2%;
   cursor: text;
   min-height: 88vh;
   outline: 1px solid #ccc;

@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import "../../styles/EditorScreen.css";
+import "../styles/EditorScreen.css";
 
 const EditorScreen = () => {
   const [content, setContent] = useState();

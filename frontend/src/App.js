@@ -8,22 +8,13 @@ import {
   FiAlignJustify,
 } from "react-icons/fi";
 
-import { MdOutlineShare } from "react-icons/md";
-import { RxUnderline } from "react-icons/rx";
-import { TbBold } from "react-icons/tb";
-import { FiItalic } from "react-icons/fi";
-import { MdOutlineFormatListNumberedRtl } from "react-icons/md";
-import { MdOutlineFormatListNumbered } from "react-icons/md";
-import { MdOutlineFormatListBulleted } from "react-icons/md";
-import { GoImage } from "react-icons/go";
-import { GoStrikethrough } from "react-icons/go";
-import { IoCodeOutline } from "react-icons/io5";
-
 import "./styles/App.css";
 
 import TextFont from "./components/TextFont";
 import TextAlignment from "./components/TextAlignment";
 import TextColor from "./components/TextColor";
+import EditorControl from "./components/EditorControl";
+
 const EditorScreen = lazy(() => import("./components/EditorScreen"));
 
 // define the alignments
@@ -120,6 +111,8 @@ const App = () => {
           </div>
           <TextColor onHandleTextColorChange={handleTextColorChange} />
         </section>
+
+        <EditorControl />
       </div>
 
       <Suspense fallback={<div>...loading</div>}>
