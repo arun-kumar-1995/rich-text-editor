@@ -37,6 +37,7 @@ const App = () => {
     element: FiAlignLeft,
   });
 
+  const [textColor, setTextColor] = useState("black");
   const handleTextStyle = (selectedTextStyle) => {
     console.log("---TEXT STYLE----", selectedTextStyle);
     setTextStyle(selectedTextStyle);
@@ -47,9 +48,10 @@ const App = () => {
     setAlignment(selectedTextAlignment);
   };
 
-  const HandleTextColorChange = () =>{
-    
-  }
+  const handleTextColorChange = (selectedColor) => {
+    setTextColor(selectedColor);
+  };
+
   return (
     <div className="rich-text-editor">
       <div className="rich-top-nav">
@@ -95,13 +97,13 @@ const App = () => {
           <div className="style-dropdown dropdown">
             <div
               className="current-color"
-              style={{ backgroundColor: "black" }}
+              style={{ backgroundColor: textColor  }}
             ></div>
             <button className="btn-icon arrow-down">
               <RiArrowDropDownLine />
             </button>
           </div>
-          <TextColor onHandleTextColorChange={handleTextColorChange}/>
+          <TextColor onHandleTextColorChange={handleTextColorChange} />
         </section>
         <section className="bold text-independent">
           <button className="text-bold">
