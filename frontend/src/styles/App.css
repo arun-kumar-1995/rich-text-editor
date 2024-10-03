@@ -15,8 +15,8 @@ div.rich-top-nav section {
 
 .selector {
   position: absolute;
-  opacity: 0;
-  visibility: hidden;
+  /* opacity: 0;
+  visibility: hidden; */
   z-index: 1;
   transition: all 0.24s ease-in;
 }
@@ -76,8 +76,12 @@ button.editor-state {
 
 /* text alignment  */
 
-.alignment-selector .selector .alignment{
- width:100%;
+.alignment-selector  .alignment{
+  width:100%;
+}
+
+.alignment-selector  .alignment svg{
+ margin-right:0.2em;
 }
 
 
@@ -94,9 +98,11 @@ button.editor-state {
   padding: 0.4rem;
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   gap: 0.6em;
   border-radius: 0.4rem;
   background-color: #fff;
+  min-width:22rem;
 }
 
 .text-color-selector .color {

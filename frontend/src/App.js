@@ -26,6 +26,13 @@ import TextFont from "./components/TextFont";
 import TextAlignment from "./components/TextAlignment";
 import TextColor from "./components/TextColor";
 
+const alignments = [
+  { element: FiAlignLeft, position: "Left" },
+  { element: FiAlignRight, position: "Right" },
+  { element: FiAlignCenter, position: "Center" },
+  { element: FiAlignJustify, position: "Justify" },
+];
+
 const App = () => {
   // for text style
   const [textStyle, setTextStyle] = useState({
@@ -33,9 +40,7 @@ const App = () => {
     text: "Paragraph",
   });
 
-  const [alignment, setAlignment] = useState({
-    element: FiAlignLeft,
-  });
+  const [alignment, setAlignment] = useState(alignments[0]);
 
   const [textColor, setTextColor] = useState("black");
   const handleTextStyle = (selectedTextStyle) => {
@@ -45,7 +50,12 @@ const App = () => {
 
   const handleAlignmentChange = (selectedTextAlignment) => {
     console.log("----ALIGN MENT----", selectedTextAlignment);
-    setAlignment(selectedTextAlignment);
+    // find the element based on position and set
+    const element = alignments.find(
+      (align) => align.position === selectedTextAlignment.position
+    );
+    console.log("----ALIGN MENT----", element);
+    setAlignment(element);
   };
 
   const handleTextColorChange = (selectedColor) => {
@@ -97,7 +107,7 @@ const App = () => {
           <div className="style-dropdown dropdown">
             <div
               className="current-color"
-              style={{ backgroundColor: textColor  }}
+              style={{ backgroundColor: textColor }}
             ></div>
             <button className="btn-icon arrow-down">
               <RiArrowDropDownLine />
