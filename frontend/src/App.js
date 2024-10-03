@@ -1,4 +1,4 @@
-import React, { lazy, Suspense, useState } from "react";
+import React, { lazy, Suspense, useCallback, useState } from "react";
 import { BiUndo } from "react-icons/bi";
 import { RiArrowDropDownLine } from "react-icons/ri";
 import {
@@ -44,12 +44,13 @@ const App = () => {
   const [textAlignment, setTextAlignment] = useState(alignments[0]);
 
   const [textColor, setTextColor] = useState("black");
-  const handleTextStyle = (selectedTextStyle) => {
+
+  const handleTextStyle = useCallback((selectedTextStyle) => {
     console.log("---TEXT STYLE----", selectedTextStyle);
     setTextStyle(selectedTextStyle);
-  };
+  }, []);
 
-  const handleAlignmentChange = (selectedTextAlignment) => {
+  const handleAlignmentChange = useCallback((selectedTextAlignment) => {
     console.log("----ALIGN MENT----", selectedTextAlignment);
     // find the element based on position and set
     const element = alignments.find(
@@ -57,11 +58,11 @@ const App = () => {
     );
     console.log("----ALIGN MENT----", element);
     setTextAlignment(element);
-  };
+  }, []);
 
-  const handleTextColorChange = (selectedColor) => {
+  const handleTextColorChange = useCallback((selectedColor) => {
     setTextColor(selectedColor);
-  };
+  }, []);
 
   return (
     <div className="rich-text-editor">
